@@ -33,13 +33,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          RUN apt-get update && apt-get install -y \
-          libglib2.0-0 \
-          ffmpeg \
-          libsm6 \
-          libxext6 \
-          && rm -rf /var/lib/apt/lists/*
+            sudo apt-get update
+            sudo apt-get install -y \
+            libglib2.0-0 \
+            ffmpeg \
+            libsm6 \
+            libxext6
+            sudo rm -rf /var/lib/apt/lists/*
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
           pip install pytest || true
