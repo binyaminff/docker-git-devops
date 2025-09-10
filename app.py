@@ -3,7 +3,7 @@ from downloadImage import download_image
 from bs4 import BeautifulSoup
 from googlesearch import search
 import requests
-from flask import Flask
+from flask import Flask,request
 from makeVideo import makeVideo
 # to search
 
@@ -13,8 +13,9 @@ app = Flask(__name__)
 @app.route("/")
 def mainApp():
 
- nameWebSite = input("give website name")
- limit = int(input("give limit"))
+ nameWebSite = request.args.get('name')
+ print(request.args.get('limit'))
+ limit = int(request.args.get('limit'))
  link = ""
  for j in search(nameWebSite, tld="co.in", num=1, stop=1, pause=1):
     link = j

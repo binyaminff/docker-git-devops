@@ -1,8 +1,6 @@
 flask
 requests
-numpy
-pandas
-gunicorn
 bs4
-googlesearch
-re
+google
+Werkzeug==2.2.2
+opencv-python-headless
