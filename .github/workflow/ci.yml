@@ -62,3 +62,6 @@ jobs:
           tags: myapp:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Push Docker image
+        run: |
+          docker push binyamin1/myapp:latest

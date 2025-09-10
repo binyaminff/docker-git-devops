@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def mainApp():
- return "done"
+
  nameWebSite = request.args.get('name')
  print(request.args.get('limit'))
  limit = int(request.args.get('limit'))
