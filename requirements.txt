@@ -1,0 +1,8 @@
+flask
+requests
+numpy
+pandas
+gunicorn
+bs4
+googlesearch
+re
