@@ -4,3 +4,7 @@ bs4
 google
 Werkzeug==2.2.2
 opencv-python-headless
+libglib2.0-0
+ffmpeg
+libsm6
+libxext6
