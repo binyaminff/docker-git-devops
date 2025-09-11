@@ -1,27 +1,26 @@
 import requests
 import os
-def download_image(image_url,index):
+
+def download_image(image_url, index):
     try:
+        # Check if URL ends with valid image extensions (case insensitive)
+        if not image_url.lower().endswith(('.jpeg', '.jpg', '.png')):
+            print(f"Skipped URL (not a supported image): {image_url}")
+            return
 
-     if(image_url.find("jpeg") != -1&image_url.find("jpg") != -1):
+        response = requests.get(image_url, stream=True, timeout=10)
+        response.raise_for_status()  # Raise HTTPError for bad responses
 
-      with open(f'{os.path.join('C:/Users/User/PycharmProjects/devops/images/', f'{index}.jpg')}', 'wb') as handle:
-         response = requests.get(image_url, stream=True)
-         response.raw.decode_content = True  # Handles gzip/deflate encodings
-         image_bytes = response.raw.read()
-         handle.write(image_bytes)
-         print(image_bytes)
-     else:
+        image_bytes = response.content
 
-      with open(f'{os.path.join('C:/Users/User/PycharmProjects/devops/images/', f'{index}.jpg')}', 'wb') as handle:
+        if not image_bytes:
+            print(f"Skipped empty image from URL: {image_url}")
+            return
 
-         response = requests.get(image_url, stream=True)
-         response.raw.decode_content = True  # Handles gzip/deflate encodings
-         image_bytes = response.raw.read()
-         handle.write(image_bytes)
-         print(image_bytes)
+        save_path = os.path.join('C:/Users/User/PycharmProjects/devops/images/', f'{index}.jpg')
+        with open(save_path, 'wb') as handle:
+            handle.write(image_bytes)
+            print(f"Downloaded image {index} from {image_url}")
 
     except Exception as e:
-        print(f"Error downloading image: {e}")
-        image_bytes = None
-
+        print(f"Error downloading image {image_url}: {e}")

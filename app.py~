@@ -16,7 +16,7 @@ def mainApp():
  nameWebSite = request.args.get('name')
  print(request.args.get('limit'))
  limit = int(request.args.get('limit'))
- link = "https://www.ynet.co.il/home/0,7340,L-8,00.html"
+ link = ""
  for j in search(nameWebSite, tld="co.in", num=1, stop=1, pause=1):
     link = j
     print(j)
