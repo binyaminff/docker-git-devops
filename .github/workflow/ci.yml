@@ -65,6 +65,6 @@ jobs:
         with:
           context: .
           push: true                      # push enabled
-          tags: binyamin1/flaskapp:ci   # full Docker Hub repo name
+          tags: binyamin1/flaskapp:ci  # full Docker Hub repo name
           cache-from: type=gha
           cache-to: type=gha,mode=max
