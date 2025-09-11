@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: true                      # push enabled
+          push: true
           tags: binyamin1/flaskapp:ci  # full Docker Hub repo name
           cache-from: type=gha
           cache-to: type=gha,mode=max
